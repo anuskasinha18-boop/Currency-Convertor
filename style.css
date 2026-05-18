@@ -1,0 +1,38 @@
+/* Custom Scrollbar for select elements */
+select {
+    scrollbar-width: thin;
+    scrollbar-color: #a855f7 #111827;
+}
+
+select::-webkit-scrollbar {
+    width: 6px;
+}
+select::-webkit-scrollbar-track {
+    background: #111827;
+}
+select::-webkit-scrollbar-thumb {
+    background: #a855f7;
+    border-radius: 10px;
+}
+
+/* Remove default select outline in some browsers */
+select:focus {
+    outline: none;
+}
+
+/* Custom dark mode select options styling */
+option {
+    background-color: #111827;
+    color: white;
+    padding: 8px;
+}
+
+/* Hide number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}

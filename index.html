@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-outfit min-h-screen flex items-center justify-center p-4">
+    <div class="relative w-full max-w-md mx-auto">
+        <!-- Glow Behind Card -->
+        <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-green-500 rounded-[2.5rem] blur opacity-75"></div>
+        
+        <!-- Main Card -->
+        <div class="relative bg-gray-900 rounded-[2rem] p-6 shadow-2xl border border-gray-800">
+            <!-- Header -->
+            <div class="flex items-center gap-3 mb-8">
+                <i class="fa-solid fa-bolt text-green-400 text-xl"></i>
+                <h2 class="text-xl font-semibold text-white">Currency Converter</h2>
+            </div>
+            
+            <form>
+                <!-- Amount -->
+                <div class="mb-6">
+                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Amount</label>
+                    <input class="w-full bg-black/50 border border-gray-700 rounded-xl px-4 py-3 text-xl font-medium text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors amount-input" value="1" type="number" min="1" />
+                </div>
+                
+                <!-- From / Swap / To -->
+                <div class="flex items-center justify-between mb-8 relative gap-4">
+                    <!-- From -->
+                    <div class="flex-1 from">
+                        <label class="block text-sm text-gray-400 mb-2">From</label>
+                        <div class="flex items-center bg-black/50 border border-gray-700 rounded-xl p-2 cursor-pointer hover:border-purple-500 transition-colors select-container">
+                            <img class="w-8 h-8 rounded-full object-cover shrink-0" src="https://flagsapi.com/US/flat/64.png" />
+                            <select name="from" class="bg-transparent text-white font-semibold ml-2 w-full focus:outline-none cursor-pointer appearance-none truncate">
+                            </select>
+                            <i class="fa-solid fa-chevron-down text-gray-400 text-xs ml-1 mr-1"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Swap Button -->
+                    <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 translate-y-[2px] z-10">
+                        <button type="button" class="swap-icon w-10 h-10 rounded-full bg-gray-800 border-2 border-gray-700 flex items-center justify-center text-gray-300 hover:text-green-400 hover:border-green-400 hover:bg-gray-900 transition-all cursor-pointer">
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- To -->
+                    <div class="flex-1 to">
+                        <label class="block text-sm text-gray-400 mb-2">To</label>
+                        <div class="flex items-center bg-black/50 border border-gray-700 rounded-xl p-2 cursor-pointer hover:border-purple-500 transition-colors select-container">
+                            <img class="w-8 h-8 rounded-full object-cover shrink-0" src="https://flagsapi.com/IN/flat/64.png" />
+                            <select name="to" class="bg-transparent text-white font-semibold ml-2 w-full focus:outline-none cursor-pointer appearance-none truncate">
+                            </select>
+                            <i class="fa-solid fa-chevron-down text-gray-400 text-xs ml-1 mr-1"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rate Display Area -->
+                <div class="bg-black/40 border border-gray-800 rounded-2xl p-6 text-center mb-6 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="msg-rate text-sm text-gray-400 mb-2">1 USD = 83.1000 INR</div>
+                    <div class="msg-large text-4xl font-bold text-white tracking-tight break-words">
+                        <span class="final-amt">83.10</span> <span class="text-xl text-gray-400 font-medium final-curr">INR</span>
+                    </div>
+                </div>
+                
+                <!-- Convert Button -->
+                <button class="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 rounded-xl transition-all shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_25px_rgba(34,197,94,0.5)] text-lg convert-btn cursor-pointer">
+                    Convert Now
+                </button>
+            </form>
+        </div>
+        
+        <!-- Bottom Cards -->
+        <div class="grid grid-cols-4 gap-3 mt-6">
+            <!-- Card 1 -->
+            <div class="quick-rate bg-gray-900/80 backdrop-blur border border-gray-800 rounded-xl p-3 text-center hover:border-purple-500 transition-colors relative overflow-hidden group cursor-pointer">
+                <div class="absolute inset-x-0 bottom-0 h-1 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-center gap-1 mb-1">
+                    <img src="https://flagsapi.com/IN/flat/64.png" class="w-4 h-4 rounded-full object-cover"/>
+                    <span class="text-[10px] font-bold text-gray-400 tracking-wider">INR/USD</span>
+                </div>
+                <div class="text-white font-semibold text-sm quick-val">--</div>
+            </div>
+            <!-- Card 2 -->
+            <div class="quick-rate bg-gray-900/80 backdrop-blur border border-gray-800 rounded-xl p-3 text-center hover:border-purple-500 transition-colors relative overflow-hidden group cursor-pointer">
+                <div class="absolute inset-x-0 bottom-0 h-1 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-center gap-1 mb-1">
+                    <img src="https://flagsapi.com/IN/flat/64.png" class="w-4 h-4 rounded-full object-cover"/>
+                    <span class="text-[10px] font-bold text-gray-400 tracking-wider">INR/JPY</span>
+                </div>
+                <div class="text-white font-semibold text-sm quick-val">--</div>
+            </div>
+            <!-- Card 3 -->
+            <div class="quick-rate bg-gray-900/80 backdrop-blur border border-gray-800 rounded-xl p-3 text-center hover:border-green-500 transition-colors relative overflow-hidden group cursor-pointer">
+                <div class="absolute inset-x-0 bottom-0 h-1 bg-green-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-center gap-1 mb-1">
+                    <img src="https://flagsapi.com/IN/flat/64.png" class="w-4 h-4 rounded-full object-cover"/>
+                    <span class="text-[10px] font-bold text-gray-400 tracking-wider">INR/EUR</span>
+                </div>
+                <div class="text-white font-semibold text-sm quick-val">--</div>
+            </div>
+            <!-- Card 4 -->
+            <div class="quick-rate bg-gray-900/80 backdrop-blur border border-gray-800 rounded-xl p-3 text-center hover:border-green-500 transition-colors relative overflow-hidden group cursor-pointer">
+                <div class="absolute inset-x-0 bottom-0 h-1 bg-green-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-center gap-1 mb-1">
+                    <img src="https://flagsapi.com/IN/flat/64.png" class="w-4 h-4 rounded-full object-cover"/>
+                    <span class="text-[10px] font-bold text-gray-400 tracking-wider">INR/LVL</span>
+                </div>
+                <div class="text-white font-semibold text-sm quick-val">--</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="codes.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
